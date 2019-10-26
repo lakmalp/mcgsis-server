@@ -9,7 +9,7 @@
 
 ## About SIS
 
-[*S*]tudent [*I*]nformation [*S*]ystem is a light web application built on Laravel framework to manage student information of government schools in Sri Lanka. This was developed as a standard web application in a way even a novice programmer can customize it. Originally designed to maintain/manage student information of [Mahinda College, Galle](http://www.mahindacollege.lk).
+[_S_]tudent [_I_]nformation [_S_]ystem is a light web application built on Laravel framework to manage student information of government schools in Sri Lanka. This was developed as a standard web application in a way even a novice programmer can customize it. Originally designed to maintain/manage student information of [Mahinda College, Galle](http://www.mahindacollege.lk).
 
 ## Contributing
 
