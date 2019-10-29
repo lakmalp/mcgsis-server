@@ -64,7 +64,7 @@
         </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-color: white">
         <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -72,8 +72,7 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
+                        @if (Route::has('register') && (!App\User::hasPrincipal()))
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
@@ -84,7 +83,7 @@
             <div class="container pt-5 mt-0">
                 <div class="col">
                     <div class="row justify-content-center">
-                        <div class="col-3 px-0 mx-0" style="background-color: black;">
+                        <div class="col-3 px-0 mx-0">
                             
                                 {{-- <div class="col pt-3 px-0 mx-0">
                                     <div class="card">
@@ -108,12 +107,12 @@
                                     <img src="{{asset('logo.png')}}" style="background-color: white;">
                                     <img class="buddha_statue" width="100%;" src="{{asset('img/olcott.jpg')}}" alt="Card image cap">
                                     {{-- <span> --}}
-                                    <h1 class="pt-3 mb-0" style="text-align: center;background-color: #FFA726;">School Information Management System</h1>
+                                    <h1 class="mt-3 pt-3 mb-0" style="text-align: center;background-color: #FFA726;">School Information Management System</h1>
                                     {{-- </span> --}}
                                 {{-- </div> --}}
                             </div>
                         </div>
-                        <div class="col-3 px-0 mx-0" style="background-color: black;">
+                        <div class="col-3 px-0 mx-0">
                                 {{-- <div class="col pt-3 px-0 mx-0">
                                         <div class="card">
                                             <img class="buddha_statue" width="100%;" src="{{asset('img/olcott.jpg')}}" alt="Card image cap">

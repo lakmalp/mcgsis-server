@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('schools/search', 'SchoolController@search')->middleware('auth')->name('schools.search');
+// Route::get('schools/search', 'SchoolController@search')->middleware('auth')->name('schools.search');
+Route::resource('users', 'UserController')->middleware('auth');
+
 Route::resource('schools', 'SchoolController')->middleware('auth');
 
 Route::resource('sports', 'SportController')->middleware('auth');
