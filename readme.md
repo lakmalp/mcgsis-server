@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p> -->
 
-## About SIS
+## About SIMS
 
-[**S**]tudent [**I**]nformation [**S**]ystem is a light web application built on Laravel framework to manage student information of government schools in Sri Lanka. This was developed as a standard web application in a way even a novice programmer can customize it. Originally designed to maintain/manage student information of [Mahinda College, Galle](http://www.mahindacollege.lk).
+[**S**]tudent [**I**]nformation [**M**]anagement [**S**]ystem is a light web application built on Laravel framework to manage student information of government schools in Sri Lanka. This was developed as a standard web application in a way even a novice programmer can customize it. Originally designed to maintain/manage student information of [Mahinda College, Galle](http://www.mahindacollege.lk).
 
 ## Contributing
 
