@@ -13,8 +13,8 @@
 
 ## Contributing
 
-Thank you for considering contributing to the SIS! For the moment, SIS is not open for modifications. But we plan to make it available for others to optimize and add features.
+Thank you for considering contributing to the SIMS! For the moment, SIMS is not open for modifications. But we plan to make it available for others to optimize and add features.
 
 ## License
 
-The SIS is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The SIMS is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
