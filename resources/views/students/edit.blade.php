@@ -16,7 +16,7 @@
                     @method('PUT')
                     @csrf
                     <div class="row">
-                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-4">
                         <div class="form-group">
                           <label for="admission_no">Admission No</label>
                           <input 
@@ -33,7 +33,7 @@
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="col-6 col-sm-6 col-md-6 col-lg-5">
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-4">
                         <div class="form-group">
                           <label for="first_names">First Names</label>
                           <input 
