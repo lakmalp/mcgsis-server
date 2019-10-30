@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Guardian;
 use App\Student;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreGuardian;
+use App\Http\Requests\UpdateGuardian;
 use Illuminate\Validation\Rule;
 
 class GuardianController extends Controller
@@ -38,27 +40,8 @@ class GuardianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGuardian $request)
     {
-        $validatedData = $request->validate([
-            'student_id' =>         'required|exists:students,id',
-            'f_initials' =>         'nullable|max:100',
-            'f_surname' =>          'nullable|max:100',
-            'f_contact_no' =>       'nullable|max:15',
-            'f_occupation' =>       'nullable|max:100',
-            'f_work_place' =>       'nullable|max:100',
-            'm_initials' =>         'nullable|max:100',
-            'm_surname' =>          'nullable|max:100',
-            'm_contact_no' =>       'nullable|max:100',
-            'm_occupation' =>       'nullable|max:100',
-            'm_work_place' =>       'nullable|max:100',
-            'g_initials' =>         'nullable|max:100',
-            'g_surname' =>          'nullable|max:100',
-            'g_contact_no' =>       'nullable|max:100',
-            'is_old_boy' =>         'nullable|boolean',
-            'total_donations' =>    'nullable|numeric'
-        ]);
-
         $guardian = new Guardian;
         $guardian->student_id =         $request->input('student_id');
         $guardian->f_initials =         $request->input('f_initials');
@@ -111,28 +94,8 @@ class GuardianController extends Controller
      * @param  \App\Guardian  $guardian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Guardian $guardian)
+    public function update(UpdateGuardian $request, Guardian $guardian)
     {
-        $validatedData = $request->validate([
-            'student_id' =>         'required|exists:students,id',
-            'f_initials' =>         'nullable|max:100',
-            'f_surname' =>          'nullable|max:100',
-            'f_contact_no' =>       'nullable|max:15',
-            'f_occupation' =>       'nullable|max:100',
-            'f_work_place' =>       'nullable|max:100',
-            'm_initials' =>         'nullable|max:100',
-            'm_surname' =>          'nullable|max:100',
-            'm_contact_no' =>       'nullable|max:100',
-            'm_occupation' =>       'nullable|max:100',
-            'm_work_place' =>       'nullable|max:100',
-            'g_initials' =>         'nullable|max:100',
-            'g_surname' =>          'nullable|max:100',
-            'g_contact_no' =>       'nullable|max:100',
-            'is_old_boy' =>         'nullable|boolean',
-            'total_donations' =>    'nullable|numeric'
-        ]);
-
-        $guardian->student_id =         $request->input('student_id');
         $guardian->f_initials =         $request->input('f_initials');
         $guardian->f_surname =          $request->input('f_surname');
         $guardian->f_contact_no =       $request->input('f_contact_no');

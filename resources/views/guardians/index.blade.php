@@ -110,9 +110,9 @@
 @push('script')
 <script type="text/javascript">
     function deleteGuardian(props) {
-        $('#lblFName').html("<b>'" + props.f_initials + " " + props.f_surname + "'</b>?");
-        $('#lblMName').html("<b>'" + props.m_initials + " " + props.m_surname + "'</b>?");
-        $('#lblGName').html("<b>'" + props.g_initials + " " + props.g_surname + "'</b>?");
+        $('#lblFName').html("<b>'" + props.f_initials + " " + (props.f_surname===null ? "" : props.f_surname) + "'</b>");
+        $('#lblMName').html("<b>'" + props.m_initials + " " + (props.m_surname===null ? "" : props.m_surname) + "'</b>");
+        $('#lblGName').html("<b>'" + props.g_initials + " " + (props.g_surname===null ? "" : props.g_surname) + "'</b>");
         $('#lblStudent').html("<b>'" + props.admission_no + "'</b>?");
         props.f_initials == null ? $('#lblFNameLi').hide() : null;
         props.m_initials == null ? $('#lblMNameLi').hide() : null;

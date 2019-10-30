@@ -19,15 +19,23 @@
                       <div class="col-12 col-md-6 col-lg-4">
                         <div class="form-group">
                           <label for="student_id">Student</label>
-                          <select name="student_id" class="form-control" aria-describedby="student_idHelp" class="@error('student_id') is-invalid @enderror">
+                          <input 
+                            type="text" 
+                            name="student_id" 
+                            aria-describedby="student_idHelp" 
+                            class="form-control"
+                            value="{{$guardian->student->admission_no . " - " . $guardian->student->first_names . " " . $guardian->student->surname}}"
+                            readonly>
+
+                          {{-- <select name="student_id" class="form-control" aria-describedby="student_idHelp" class="@error('student_id') is-invalid @enderror">
                             @foreach($students as $student)
                               <option value="{{$student->id}}" {{$guardian->student_id==$student->id?'selected':''}}>{{$student->admission_no . " - " . $student->first_names . " " . $student->surname}}</option>
                             @endforeach
-                          </select>
+                          </select> --}}
                         </div>
-                        @error('student_id')
+                        {{-- @error('student_id')
                           <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                       </div>
                     </div>
                     <hr />
@@ -36,6 +44,7 @@
                         <div class="form-group">
                           <label for="f_initials">Father's Initials</label>
                           <input 
+                            autofocus
                             type="text" 
                             name="f_initials" 
                             aria-describedby="f_initialsHelp" 
@@ -77,12 +86,12 @@
                       <div class="col-12 col-md-6 col-lg-6">
                         <div class="form-group">
                           <label for="f_occupation">Father's Occupation</label>
-                          <input 
-                            type="text" 
-                            name="f_occupation" 
-                            aria-describedby="f_occupationHelp" 
-                            class="form-control @error('f_occupation') is-invalid @enderror"
-                            value="{{$errors->has('f_occupation') ? old('f_occupation') : $guardian->f_occupation}}">
+                          <select name="f_occupation" aria-describedby="house_idHelp" class="form-control @error('f_occupation') is-invalid @enderror">
+                            <option value=""></option>
+                            @foreach(App\Guardian::getOccupations() as $key => $value)
+                              <option value="{{$key}}" {{(old('f_occupation')===null ? $guardian->f_occupation : old('f_occupation'))==$key ? ' selected' : ''}}>{{$value}}</option>
+                            @endforeach
+                          </select>
                           <div class="invalid-feedback">
                               @error('f_occupation') {{$message}} @enderror
                           </div>
@@ -150,12 +159,12 @@
                       <div class="col-12 col-md-6 col-lg-6">
                         <div class="form-group">
                           <label for="m_occupation">Mother's Occupation</label>
-                          <input 
-                            type="text" 
-                            name="m_occupation" 
-                            aria-describedby="m_occupationHelp" 
-                            class="form-control @error('m_occupation') is-invalid @enderror"
-                            value="{{$errors->has('m_occupation') ? old('m_occupation') : $guardian->m_occupation}}">
+                          <select name="m_occupation" aria-describedby="house_idHelp" class="form-control @error('m_occupation') is-invalid @enderror">
+                            <option value=""></option>
+                            @foreach(App\Guardian::getOccupations() as $key => $value)
+                              <option value="{{$key}}" {{(old('m_occupation')===null ? $guardian->m_occupation : old('m_occupation'))==$key ? ' selected' : ''}}>{{$value}}</option>
+                            @endforeach
+                          </select>
                           <div class="invalid-feedback">
                               @error('m_occupation') {{$message}} @enderror
                           </div>
@@ -228,7 +237,6 @@
                               <span class="input-group-text">Rs.</span>
                             </div>
                             <input 
-                              autofocus
                               type="number" 
                               name="total_donations" 
                               aria-describedby="total_donationsHelp" 
