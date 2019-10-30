@@ -33,4 +33,34 @@ class Guardian extends Model
     {
         return $this->belongsTo('App\Student');
     }
+
+    public static function getOccupations()
+    {
+        return [
+            'acc' => 'Accountant',
+            'con' => 'Contractor',
+            'dir' => 'Director or Manager of a company',
+            'doc' => 'Doctor',
+            'eng' => 'Engineer',
+            'exe' => 'Executive',
+            'far' => 'Farmer',
+            'law' => 'Lawyer',
+            'lec' => 'Lecturer',
+            'mcpl' => 'Mason, Carpenter, Plumber, Landscaper',
+            'mechele' => 'Mechanic, Electrician',
+            'media' => 'Media Person',
+            'mus' => 'Musician',
+            'nur' => 'Nurse',
+            'oth' => 'Other',
+            'pla' => 'Planter',
+            'pofc' => 'Police Officer',
+            'prin' => 'Principal',
+            'prop' => 'Proprietor (Owner of a business or a holder of a property)',
+            'retd' => 'Retired',
+            'sales' => 'Salesperson',
+            'sctst' => 'Scientist',
+            'teach' => 'Teacher',
+            'triofc' => 'Tri-forces Officer',
+        ];
+    }
 }
