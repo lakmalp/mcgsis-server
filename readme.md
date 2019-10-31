@@ -6,6 +6,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a> -->
 <img src="https://img.shields.io/github/issues/lakmalp/mcgsis-server?style=plastic" alt="Issues">
+<img src="https://img.shields.io/github/forks/lakmalp/mcgsis-server?style=plastic" alt="Forks">
+<img src="https://img.shields.io/github/stars/lakmalp/mcgsis-server?style=plastic" alt="Stars">
 </p>
 
 ## About SIMS
