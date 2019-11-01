@@ -21,7 +21,11 @@ class Student extends Model
         'sport_id_3',
         'is_scholar',
         'is_special_need',
-        'disability_id'
+        'disability_id',
+        'ol_mahindian',
+        'olevel_nine_a',
+        'grade_5_mahindian',
+        'grade_5_passed',
     ];
 
     public function disability()

@@ -15,7 +15,7 @@
                   <form method="POST" action="{{route('students.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-4">
                         <div class="form-group">
                           <label for="admission_no">Admission No</label>
                           <input 
@@ -46,7 +46,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-6 col-sm-6 col-md-12 col-lg-5">
+                      <div class="col-6 col-sm-6 col-md-12 col-lg-4">
                         <div class="form-group">
                           <label for="surname">Surname</label>
                           <input 
@@ -181,6 +181,7 @@
                         <div class="form-group">
                           <label for="sport_1_id">Sport 1</label>
                           <select name="sport_1_id" class="form-control" aria-describedby="sport_1_idHelp" class="@error('sport_1_id') is-invalid @enderror">
+                            <option value=""></option>
                             @foreach($sports as $sport)
                               <option value="{{$sport->id}}">{{$sport->description}}</option>
                             @endforeach
@@ -194,6 +195,7 @@
                         <div class="form-group">
                           <label for="sport_2_id">Sport 2</label>
                           <select name="sport_2_id" class="form-control" aria-describedby="sport_2_idHelp" class="@error('sport_2_id') is-invalid @enderror">
+                            <option value=""></option>
                             @foreach($sports as $sport)
                               <option value="{{$sport->id}}">{{$sport->description}}</option>
                             @endforeach
@@ -207,6 +209,7 @@
                         <div class="form-group">
                           <label for="sport_3_id">Sport 3</label>
                           <select name="sport_3_id" class="form-control" aria-describedby="sport_3_idHelp" class="@error('sport_3_id') is-invalid @enderror">
+                            <option value=""></option>
                             @foreach($sports as $sport)
                               <option value="{{$sport->id}}">{{$sport->description}}</option>
                             @endforeach
@@ -290,8 +293,44 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
+                              <div class="form-group">
+                                <label for="sel1">Passed G.C.E. O/L Examination with 9As</label>
+                                <div class="form-check-inline float-right pt-0" id="ol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="ol_mahindian" value="1" {{old('ol_mahindian')==1 ? "checked" : ""}}>Mahindian
+                                  </label>
+                                </div>
+                                <select name="olevel_nine_a" class="form-control" id="olevel_nine_a">
+                                  <option value="0" {{old('olevel_nine_a')=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{old('olevel_nine_a')=="1" ? "selected" : ""}}>Yes</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
+                              <div class="form-group">
+                                <label for="sel1">Passed Grade 5 Scholarship Examination</label>
+                                <div class="form-check-inline float-right pt-0" id="schol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="schol_mahindian" value="1" {{old('schol_mahindian')==1 ? "checked" : ""}}>Mahindian
+                                  </label>
+                                </div>
+                                <select name="grade_5_passed" class="form-control" id="grade_5_passed">
+                                  <option value="0" {{old('grade_5_passed')=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{old('grade_5_passed')=="1" ? "selected" : ""}}>Yes</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-4">
                       <div class="col">
                         <button type="button" class="btn btn-light btn-sm my-1" onclick="window.location.href='{{route('students.index')}}'"><i class="far fa-arrow-alt-circle-left mr-2"></i>Cancel</button>
                         <span class="float-right">
@@ -315,3 +354,26 @@
     color: rgba(50,50,50, .9);
 }
 </style>
+
+@push('script')
+<script>
+  $( document ).ready(function() {
+    $('#olevel_nine_a').on('change', function() {
+      if( this.value == "1") {
+        $("#ol_mahindian").show();
+      }
+      else {
+        $("#ol_mahindian").hide();
+      }
+    });
+    $('#grade_5_passed').on('change', function() {
+      if( this.value == "1") {
+        $("#schol_mahindian").show();
+      }
+      else {
+        $("#schol_mahindian").hide();
+      }
+    });
+  });
+</script>
+@endpush
