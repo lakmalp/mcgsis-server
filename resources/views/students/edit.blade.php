@@ -314,6 +314,42 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
+                              <div class="form-group">
+                                <label for="sel1">Passed G.C.E. O/L Examination with 9As</label>
+                                <div class="form-check-inline float-right pt-0" id="ol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="ol_mahindian" value="1" {{$student->ol_mahindian==1 ? "checked" : ""}}>Mahindian
+                                  </label>
+                                </div>
+                                <select name="olevel_nine_a" class="form-control" id="olevel_nine_a">
+                                  <option value="0" {{$student->olevel_nine_a=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{$student->olevel_nine_a=="1" ? "selected" : ""}}>Yes</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
+                              <div class="form-group">
+                                <label for="sel1">Passed Grade 5 Scholarship Examination</label>
+                                <div class="form-check-inline float-right pt-0" id="schol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="schol_mahindian" value="1" {{$student->schol_mahindian==1 ? "checked" : ""}}>Mahindian
+                                  </label>
+                                </div>
+                                <select name="grade_5_passed" class="form-control" id="grade_5_passed">
+                                  <option value="0" {{$student->grade_5_passed=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{$student->grade_5_passed=="1" ? "selected" : ""}}>Yes</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="col">
@@ -339,3 +375,32 @@
     color: rgba(50,50,50, .9);
 }
 </style>
+
+@push('script')
+<script>
+  $( document ).ready(function() {
+    if ($('#olevel_nine_a').val() == "1") {
+      $("#ol_mahindian").show();
+    }
+    if ($('#grade_5_passed').val() == "1") {
+      $("#schol_mahindian").show();
+    }
+    $('#olevel_nine_a').on('change', function() {
+      if( this.value == "1") {
+        $("#ol_mahindian").show();
+      }
+      else {
+        $("#ol_mahindian").hide();
+      }
+    });
+    $('#grade_5_passed').on('change', function() {
+      if( this.value == "1") {
+        $("#schol_mahindian").show();
+      }
+      else {
+        $("#schol_mahindian").hide();
+      }
+    });
+  });
+</script>
+@endpush

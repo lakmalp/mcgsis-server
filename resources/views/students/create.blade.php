@@ -299,14 +299,14 @@
                             <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
                               <div class="form-group">
                                 <label for="sel1">Passed G.C.E. O/L Examination with 9As</label>
-                                <div class="form-check-inline float-right pt-0" style="display: none;">
-                                  <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="ol-mahindian" name="ol-mahindian" value="1">Mahindian
+                                <div class="form-check-inline float-right pt-0" id="ol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="ol_mahindian" value="1" {{old('ol_mahindian')==1 ? "checked" : ""}}>Mahindian
                                   </label>
                                 </div>
-                                <select name="olevel-nine-a" class="form-control" id="olevel-nine-a">
-                                  <option value="no">No</option>
-                                  <option value="yes">Yes</option>
+                                <select name="olevel_nine_a" class="form-control" id="olevel_nine_a">
+                                  <option value="0" {{old('olevel_nine_a')=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{old('olevel_nine_a')=="1" ? "selected" : ""}}>Yes</option>
                                 </select>
                               </div>
                             </div>
@@ -315,14 +315,14 @@
                             <div class="px-2 pt-2 pb-1" style="border: 1px solid rgba(150, 150, 150, 0.2);border-radius: 5px;">
                               <div class="form-group">
                                 <label for="sel1">Passed Grade 5 Scholarship Examination</label>
-                                <div class="form-check-inline float-right pt-0" style="display: none;">
-                                  <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="grade-5-schol" name="grade-5-schol" value="1">Mahindian
+                                <div class="form-check-inline float-right pt-0" id="schol_mahindian" style="display: none;">
+                                  <label class="form-check-label" style="color: #F57C00">
+                                    <input type="checkbox" class="form-check-input" name="schol_mahindian" value="1" {{old('schol_mahindian')==1 ? "checked" : ""}}>Mahindian
                                   </label>
                                 </div>
-                                <select name="olevel-grade-5" class="form-control" id="olevel-grade-5">
-                                  <option value="no">No</option>
-                                  <option value="yes">Yes</option>
+                                <select name="grade_5_passed" class="form-control" id="grade_5_passed">
+                                  <option value="0" {{old('grade_5_passed')=="0" ? "selected" : ""}}>No</option>
+                                  <option value="1" {{old('grade_5_passed')=="1" ? "selected" : ""}}>Yes</option>
                                 </select>
                               </div>
                             </div>
@@ -358,9 +358,21 @@
 @push('script')
 <script>
   $( document ).ready(function() {
-    alert( this.value );
-    $('#olevel-nine-a').on('change', function() {
-      alert( this.value );
+    $('#olevel_nine_a').on('change', function() {
+      if( this.value == "1") {
+        $("#ol_mahindian").show();
+      }
+      else {
+        $("#ol_mahindian").hide();
+      }
+    });
+    $('#grade_5_passed').on('change', function() {
+      if( this.value == "1") {
+        $("#schol_mahindian").show();
+      }
+      else {
+        $("#schol_mahindian").hide();
+      }
     });
   });
 </script>

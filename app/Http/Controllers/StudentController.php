@@ -85,6 +85,10 @@ class StudentController extends Controller
             // Set user profile image path in database to filePath
             $student->avatar = $filePath;
         }
+        $student->olevel_nine_a = $request->input('olevel_nine_a');
+        $student->ol_mahindian = $request->input('olevel_nine_a') == "0" ? 0 : $request->input('ol_mahindian');
+        $student->grade_5_passed = $request->input('grade_5_passed');
+        $student->schol_mahindian = $request->input('grade_5_passed') == "0" ? 0 : $request->input('schol_mahindian');
         $student->save();
 
         return redirect()->route('students.index', ['students' => Student::paginate(10)]);
@@ -167,6 +171,10 @@ class StudentController extends Controller
             // Set user profile image path in database to filePath
             $student->avatar = $filePath;
         }
+        $student->olevel_nine_a = $request->input('olevel_nine_a');
+        $student->ol_mahindian = $request->input('olevel_nine_a') == "0" ? 0 : $request->input('ol_mahindian');
+        $student->grade_5_passed = $request->input('grade_5_passed');
+        $student->schol_mahindian = $request->input('grade_5_passed') == "0" ? 0 : $request->input('schol_mahindian');
         $student->save();
 
         return redirect()->route('students.index', ['students' => Student::paginate(10)]);
