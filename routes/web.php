@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('schools/search', 'SchoolController@search')->middleware('auth')->name('schools.search');
+Route::get('students/search', 'StudentController@search')->middleware('auth')->name('students.search');
+Route::get('students/dosearch', 'StudentController@doSearch')->middleware('auth')->name('students.do.search');
+
 Route::resource('users', 'UserController')->middleware('auth');
 
 Route::resource('schools', 'SchoolController')->middleware('auth');
