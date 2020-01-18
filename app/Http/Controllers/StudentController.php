@@ -11,6 +11,7 @@ use App\Sport;
 use App\Disability;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -189,5 +190,54 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         Student::destroy($student->id);
+    }
+
+    public function search()
+    {
+        // return Student::search("cric")->get();
+        $houses = House::all();
+        $sports = Sport::all();
+        $disabilities = Disability::all();
+        return view('students.search', ['houses' => $houses, 'sports' => $sports, 'disabilities' => $disabilities]);
+    }
+
+    public function doSearch(Request $request)
+    {
+        $whereQuery = [];
+        $this->buildWhere('admission_no', $request, $whereQuery);
+        $this->buildWhere('first_names', $request, $whereQuery);
+        $this->buildWhere('surname', $request, $whereQuery);
+        $this->buildWhere('dob', $request, $whereQuery);
+        $this->buildWhere('date_of_admission', $request, $whereQuery);
+        $this->buildWhere('house_id', $request, $whereQuery);
+        $this->buildWhere('grade_class', $request, $whereQuery);
+        $this->buildWhere('add_1', $request, $whereQuery);
+        $this->buildWhere('add_2', $request, $whereQuery);
+        $this->buildWhere('city', $request, $whereQuery);
+        $this->buildWhere('gnd', $request, $whereQuery);
+        $this->buildWhere('sport_1_id', $request, $whereQuery);
+        $this->buildWhere('sport_2_id', $request, $whereQuery);
+        $this->buildWhere('sport_3_id', $request, $whereQuery);
+        $this->buildWhere('is_scholar', $request, $whereQuery);
+        $this->buildWhere('schol_amount', $request, $whereQuery);
+        $this->buildWhere('has_special_need', $request, $whereQuery);
+        $this->buildWhere('disability_id', $request, $whereQuery);
+        $this->buildWhere('remarks', $request, $whereQuery);
+        $this->buildWhere('olevel_nine_a', $request, $whereQuery);
+        $this->buildWhere('ol_mahindian', $request, $whereQuery);
+        $this->buildWhere('grade_5_passed', $request, $whereQuery);
+        $this->buildWhere('schol_mahindian', $request, $whereQuery);
+
+        $students = Student::with(['disability'])->where($whereQuery)->paginate(10);
+
+        return view('students.index', ['students' => $students]);
+    }
+
+    private function buildWhere($name, $request, &$whereQuery)
+    {
+        $value = $request->input($name);
+        if ($value != null) {
+            $whereQuery[] = [$name, 'LIKE', '%' . $value . '%'];
+        }
     }
 }

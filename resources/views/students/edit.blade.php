@@ -300,19 +300,21 @@
                               class="@error('avatar') is-invalid @enderror">
                           @endif
                         </div>
-                        <div class="col-12 pt-3">
-                          <div class="form-group">
-                            <label for="remarks">Remarks</label>
-                            <textarea
-                              rows="4"
-                              name="remarks"
-                              aria-describedby="remarksHelp"
-                              class="form-control @error('remarks') is-invalid @enderror">{{$errors->has('remarks') ? old('remarks') : $student->remarks}}</textarea>
-                            <div class="invalid-feedback">
-                                @error('remarks') {{$message}} @enderror
+                        @if (Auth::user()->usertype == "principal")
+                          <div class="col-12 pt-3">
+                            <div class="form-group">
+                              <label for="remarks">Remarks</label>
+                              <textarea
+                                rows="4"
+                                name="remarks"
+                                aria-describedby="remarksHelp"
+                                class="form-control @error('remarks') is-invalid @enderror">{{$errors->has('remarks') ? old('remarks') : $student->remarks}}</textarea>
+                              <div class="invalid-feedback">
+                                  @error('remarks') {{$message}} @enderror
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        @endif
                       </div>
                       <div class="col-12">
                         <div class="row">
@@ -353,9 +355,9 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                        <button type="button" class="btn btn-light btn-sm my-1" onclick="window.location.href='{{route('students.index')}}'"><i class="far fa-arrow-alt-circle-left mr-2"></i>Cancel</button>
+                        {{-- <button type="button" class="btn btn-light btn-sm my-1" onclick="window.location.href='{{route('students.index')}}'"><i class="far fa-arrow-alt-circle-left mr-2"></i>Cancel</button> --}}
                         <span class="float-right">
-                          <button type="reset" class="btn btn-light btn-sm my-1 mr-3"><i class="fas fa-broom mr-2"></i>Clear</button>
+                          {{-- <button type="reset" class="btn btn-light btn-sm my-1 mr-3"><i class="fas fa-broom mr-2"></i>Clear</button> --}}
                           <button type="submit" class="btn btn-secondary btn-sm my-1 "><i class="far fa-save mr-2"></i>Save</button>
                         </span>
                       </div>

@@ -6,9 +6,14 @@
         <div class="col-sm-12 col-md-10">
             <div class="row">
                 <div class="col">
-                    <a href="{{route('students.create')}}" class="btn btn-light btn-sm float-right my-1" role="button">
-                        <i class="fas fa-plus-circle mr-2"></i>New
-                    </a>
+                    <span class="float-right my-1">
+                        <a href="{{route('students.create')}}" class="btn btn-light btn-sm" role="button">
+                            <i class="fas fa-plus-circle mr-2"></i>New
+                        </a>
+                        <a href="{{route('students.search')}}" class="btn btn-light btn-sm" role="button">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </a>
+                    </span>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -27,6 +32,9 @@
                                         <th style="text-align: center" scope="col">Full Name</th>
                                         <th style="text-align: center" scope="col">Class</th>
                                         <th style="text-align: center" scope="col">Disability</th>
+                                        @if (Auth::user()->usertype == "principal")
+                                            <th style="text-align: center" scope="col">Remarks</th>
+                                        @endif
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -37,6 +45,9 @@
                                             <td>{{ $student->first_names . " " .$student->surname}}</td>
                                             <td>{{ $student->grade_class}}</td>
                                             <td>{{ $student->disability()->exists()?$student->disability->description:''}}</td>
+                                            @if (Auth::user()->usertype == "principal")
+                                                <td>{{ $student->remarks}}</td>
+                                            @endif
                                             <td></td>
                                         </tr>
                                         @endforeach
